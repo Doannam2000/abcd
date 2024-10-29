@@ -51,7 +51,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation (libs.face.mesh.detection)
 
-
     //camera
     implementation (libs.androidx.camera.core)
     implementation (libs.androidx.camera.camera2)

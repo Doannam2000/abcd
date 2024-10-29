@@ -1,6 +1,5 @@
 package com.leet.facedetection.detector
 
-import android.util.Log
 import androidx.annotation.OptIn
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ExperimentalGetImage
@@ -40,6 +39,28 @@ class DetectFragment : CameraFragment<FragmentDetectionBinding>() {
         binding.overView.drawRectangleHead(result)
         imageProxy.close()
     }
+
+//    override fun handleFaceDetector(result: MutableList<Face>, imageProxy: ImageProxy) {
+//        if (needSetupImageSource.compareAndSet(true, false)) {
+//            val isImageFlipped = lensFacing == CameraSelector.LENS_FACING_FRONT
+//            val rotationDegrees = imageProxy.imageInfo.rotationDegrees
+//            if (rotationDegrees == 0 || rotationDegrees == 180) {
+//                binding.overView.setImageSourceInfo(
+//                    imageProxy.width,
+//                    imageProxy.height,
+//                    isImageFlipped
+//                )
+//            } else {
+//                binding.overView.setImageSourceInfo(
+//                    imageProxy.height,
+//                    imageProxy.width,
+//                    isImageFlipped
+//                )
+//            }
+//        }
+//        binding.overView.drawRectangleHeadFace(result)
+//        imageProxy.close()
+//    }
 
     override fun addEvent() {
     }

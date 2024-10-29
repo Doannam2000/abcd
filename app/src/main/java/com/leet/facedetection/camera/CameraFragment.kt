@@ -10,9 +10,7 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.google.mlkit.vision.common.InputImage
@@ -37,7 +35,6 @@ abstract class CameraFragment<VB : ViewBinding> : BaseFragment<VB>(), ICamera {
 
     @SuppressLint("WrongConstant", "RestrictedApi")
     override fun startCamera(previewView: PreviewView) {
-
         if (lensFacing == -1) {
             lensFacing = CameraSelector.LENS_FACING_FRONT
         }
@@ -101,6 +98,7 @@ abstract class CameraFragment<VB : ViewBinding> : BaseFragment<VB>(), ICamera {
     }
 
     open fun handleFaceMesh(result: MutableList<FaceMesh>, imageProxy: ImageProxy) {}
+//    open fun handleFaceDetector(result: MutableList<Face>, imageProxy: ImageProxy) {}
 
     override fun stopCamera() {
         try {

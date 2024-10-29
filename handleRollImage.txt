@@ -1,0 +1,43 @@
+   private fun handleRollImage(canvas: Canvas) {
+        canvas.setMatrix(transformationMatrix)
+        val faceMesh = this.faceMeshes.first()
+
+        val pointTop = faceMesh.getPoints(NOSE_BRIDGE).first()
+        val pointBottom = faceMesh.getPoints(NOSE_BRIDGE).last()
+//        val left = faceMesh.getPoints(LEFT_EYEBROW_TOP).first()
+//        val right = faceMesh.getPoints(RIGHT_EYEBROW_TOP).first()
+
+        val centerHead = PointF(
+            2 * pointTop.position.x - pointBottom.position.x,
+            2 * pointTop.position.y - pointBottom.position.y
+        )
+//        val startRectangle =
+//            PointF(2 * left.position.x - centerHead.x, 2 * left.position.y - centerHead.y)
+//
+//        val endRectangle =
+//            PointF(2 * right.position.x - centerHead.x, 2 * right.position.y - centerHead.y)
+
+        val bottomRectangle = PointF(
+            2 * centerHead.x - pointTop.position.x, 2 * centerHead.y - pointTop.position.y
+        )
+
+//        val topRectangle = PointF(
+//            2 * bottomRectangle.x - pointBottom.position.x,
+//            2 * bottomRectangle.y - pointBottom.position.y
+//        )
+
+        val rectangle = Rect(
+            centerHead.x.toInt() - 100,
+            bottomRectangle.y.toInt() - 125,
+            centerHead.x.toInt() + 100,
+            bottomRectangle.y.toInt()
+        )
+
+        if (mBitmap?.isRecycled != true) {
+            mBitmap?.recycle()
+        }
+        mBitmap = BitmapFactory.decodeResource(resources, currentItem)
+        mBitmap?.let {
+            canvas.drawBitmap(it, null, rectangle, null)
+        }
+    }
